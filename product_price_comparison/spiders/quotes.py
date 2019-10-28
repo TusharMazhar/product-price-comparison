@@ -3,7 +3,7 @@ import scrapy
 
 
 class QuotesSpider(scrapy.Spider):
-    name = 'quotes'
+    name = 'quotes' # spider created it must be unique
     allowed_domains = ['quotes.toscrape.com']
     
     start_urls = ['http://quotes.toscrape.com/']
