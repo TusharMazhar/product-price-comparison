@@ -9,6 +9,12 @@ import scrapy
 
 
 class ProductPriceComparisonItem(scrapy.Item):
+    
+    image= scrapy.Field()
+    titile= scrapy.Field()
+    link= scrapy.Field()
+    price= scrapy.Field()
+
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    
     pass

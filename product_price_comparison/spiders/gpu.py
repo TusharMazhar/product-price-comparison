@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from ..items import ProductPriceComparisonItem
 
+    
 
 class GpuSpider(scrapy.Spider):
 
@@ -11,27 +13,29 @@ class GpuSpider(scrapy.Spider):
     def parse(self, response):
 
 
+        items=ProductPriceComparisonItem()
+      
+        items['image']=response.xpath('//*[@class="img-box"]/a/img/@src').extract()
+        items['price']=response.xpath('//*[@class="price"]/text()').extract()
+        items['link']=response.xpath('//*[@class="img-box"]/a/@href').extract()
+        items['titile']=response.xpath('//*[@class="pro-name"]/a/text()').extract()
+
+        yield items
+
+
+
+        
 
        
-        image=response.xpath('//*[@class="img-box"]/a/img/@src').extract()
-        titile=response.xpath('//*[@class="pro-name"]/a/text()').extract()
-        link=response.xpath('//*[@class="img-box"]/a/@href').extract()
-        price=response.xpath('//*[@class="price"]/text()').extract()
 
-        length=len(image)
-        i=1
-        while i<=length:
-            print('\n')
-            print("  Product-Name :",titile[i],"\n"," Price :",price[i],"\n"," Image :",image[i],"\n"," Link :",link[i])
-            
-            print('\n')  
-            i=i+1
 
 
         
 
+       
+
         
-        
+
 
 
 
@@ -104,23 +108,7 @@ class GpuSpider(scrapy.Spider):
 
 
   
-"""
-        
-        smartBdGpuInfoBox=response.xpath('//*[@class="pro-box"]')
-        for smartBdGpu in smartBdGpuInfoBox:
-            image=smartBdGpu.xpath('//*[@class="img-box"]/a/img/@src').extract_first()  
-            titile=smartBdGpu.xpath('//*[@class="pro-name"]/a/text()').extract_first()
-            link=smartBdGpu.xpath('//*[@class="img-box"]/a/@href').extract_first() 
-            price=smartBdGpu.xpath('//*[@class="price"]/text()').extract_first()  
-            print('\n')
-            print(image)
-            print(titile)
-            print(link)
-            print(price)
-            print('\n')
-
-
-"""       
+   
 
         
 
