@@ -15,7 +15,6 @@ class SmartbdSpider(scrapy.Spider):
         items=ProductPriceComparisonItem()
         all_product=response.xpath('//*[@class="ma-box-content"]')
         for store in all_product:
-
             items['image']= store.xpath('.//*[@class="product-image"]/img/@src').extract_first()   
             items['price']=store.xpath('.//*[@class="regular-price"]/span/text()').extract_first()
             items['link']=store.xpath('.//*[@class="product-name"]/a/@href').extract_first()
