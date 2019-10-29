@@ -22,6 +22,8 @@ class GpuSpider(scrapy.Spider):
             items['link']=store.xpath('.//*[@class="img-box"]/a/@href').extract_first()
             items['titile']=store.xpath('.//*[@class="pro-name"]/a/text()').extract_first()
 
+            
+
             yield items
 
 
