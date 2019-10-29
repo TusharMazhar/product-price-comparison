@@ -4,7 +4,7 @@ from ..items import ProductPriceComparisonItem
 
 
 class StarttechSpider(scrapy.Spider):
-    name = 'starttech'
+    name = 'startech'
     page_number=2
     allowed_domains = ['startech.com.bd']
     start_urls = ['https://www.startech.com.bd/product/search?&search=graphics+card&category_id=0&page=1']

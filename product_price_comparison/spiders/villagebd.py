@@ -6,7 +6,7 @@ from ..items import ProductPriceComparisonItem
 
 class GpuSpider(scrapy.Spider):
 
-    name = 'gpu'
+    name = 'villagebd'
     allowed_domains = ['village-bd.com'] #  domain name only copied
     start_urls = ['https://www.village-bd.com/search?q=graphics+card'] # link copy from website
 
