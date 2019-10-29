@@ -17,7 +17,7 @@ FEED_EXPORT_FIELDS = ['Title','URL', 'Address', 'Compensation', 'Employment Type
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'product_price_comparison (+http://www.yourdomain.com)'
+#USER_AGENT = 'product_price_comparison (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
