@@ -14,13 +14,15 @@ class GpuSpider(scrapy.Spider):
 
 
         items=ProductPriceComparisonItem()
-      
-        items['image']=response.xpath('//*[@class="img-box"]/a/img/@src').extract()
-        items['price']=response.xpath('//*[@class="price"]/text()').extract()
-        items['link']=response.xpath('//*[@class="img-box"]/a/@href').extract()
-        items['titile']=response.xpath('//*[@class="pro-name"]/a/text()').extract()
+        all_product=response.xpath('//*[@class="pro-box"]')
+        for store in all_product:
 
-        yield items
+            items['image']=store.xpath('.//*[@class="img-box"]/a/img/@src').extract_first()
+            items['price']=store.xpath('.//*[@class="price"]/text()').extract_first()
+            items['link']=store.xpath('.//*[@class="img-box"]/a/@href').extract_first()
+            items['titile']=store.xpath('.//*[@class="pro-name"]/a/text()').extract_first()
+
+            yield items
 
 
 
