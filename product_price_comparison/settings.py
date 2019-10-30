@@ -13,7 +13,8 @@ BOT_NAME = 'product_price_comparison'
 
 SPIDER_MODULES = ['product_price_comparison.spiders']
 NEWSPIDER_MODULE = 'product_price_comparison.spiders'
-FEED_EXPORT_FIELDS = ['Title','URL', 'Address', 'Compensation', 'Employment Type','Description']
+#FEED_EXPORT_FIELDS = ['Title','URL', 'Address', 'Compensation', 'Employment Type','Description']
+FEED_EXPORT_FIELDS = ['image','link', 'price', 'titile']
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -65,9 +66,20 @@ DOWNLOAD_DELAY =10
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'product_price_comparison.pipelines.ProductPriceComparisonPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'product_price_comparison.pipelines.ProductPriceComparisonPipeline': 300,
+}
+
+FEED_EXPORTERS = {
+    'json': 'scrapy.exporters.JsonItemExporter',
+    'jsonlines': 'scrapy.exporters.JsonLinesItemExporter',
+    'jl': 'scrapy.exporters.JsonLinesItemExporter',
+    'csv': 'scrapy.exporters.CsvItemExporter',
+    'xml': 'scrapy.exporters.XmlItemExporter',
+    'marshal': 'scrapy.exporters.MarshalItemExporter',
+    'pickle': 'scrapy.exporters.PickleItemExporter',
+}
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
