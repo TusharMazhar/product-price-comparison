@@ -15,7 +15,13 @@ class StarttechSpider(scrapy.Spider):
         all_product=response.xpath('//*[@class="col-xs-12 col-md-12 product-layout list"]')
         for store in all_product:
             items['image']=store.xpath('.//*[@class="img-holder"]/a/img/@src').extract_first()
-            items['price']=store.xpath('.//*[@class="price"]/span/text()').extract_first()
+
+            price=store.xpath('.//*[@class="price"]/span/text()').extract_first()
+            priceSignRemoved=price.replace('৳','')
+            convertedprice=float(priceSignRemoved.replace(",",''))
+            items['price']=convertedprice
+
+            
             items['link']=store.xpath('.//*[@class="product-name"]/a/@href').extract_first()
             items['titile']=store.xpath('.//*[@class="product-name"]/a/text()').extract_first()
 

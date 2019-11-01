@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
+
+
+
 from ..items import ProductPriceComparisonItem
 
     
@@ -18,7 +21,16 @@ class GpuSpider(scrapy.Spider):
         for store in all_product:
 
             items['image']=store.xpath('.//*[@class="img-box"]/a/img/@src').extract_first()
-            items['price']=store.xpath('.//*[@class="price"]/text()').extract_first()
+
+
+            # important part start
+            price=store.xpath('.//*[@class="price"]/text()').extract_first()
+            priceSignRemoved=price.replace('৳','')
+            convertedprice=float(priceSignRemoved.replace(",",''))
+            items['price']=convertedprice
+            # important part end
+
+
             items['link']=store.xpath('.//*[@class="img-box"]/a/@href').extract_first()
             items['titile']=store.xpath('.//*[@class="pro-name"]/a/text()').extract_first()
 
@@ -26,99 +38,6 @@ class GpuSpider(scrapy.Spider):
 
             yield items
 
-
-
-        
-
-       
-
-
-
-        
-
-       
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-
-
-
-
-  
-   
-
-        
-
-           
-
-            
 
 
 

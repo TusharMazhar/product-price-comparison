@@ -3,6 +3,8 @@ import scrapy
 from ..items import ProductPriceComparisonItem
 
 
+
+
 class SmartbdSpider(scrapy.Spider):
     name = 'smartbd'
     page_number=2
@@ -16,7 +18,13 @@ class SmartbdSpider(scrapy.Spider):
         all_product=response.xpath('//*[@class="ma-box-content"]')
         for store in all_product:
             items['image']= store.xpath('.//*[@class="product-image"]/img/@src').extract_first()   
-            items['price']=store.xpath('.//*[@class="regular-price"]/span/text()').extract_first()
+
+
+            price=store.xpath('.//*[@class="regular-price"]/span/text()').extract_first()
+            priceSignRemoved=price.replace('BDT','')
+            convertedprice=float(priceSignRemoved.replace(",",''))
+            items['price']= convertedprice
+
             items['link']=store.xpath('.//*[@class="product-name"]/a/@href').extract_first()
             items['titile']=store.xpath('.//*[@class="product-name"]/a/text()').extract_first()
 
