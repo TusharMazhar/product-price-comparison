@@ -55,7 +55,7 @@ product_index = get_index_from_titile(product_user_search)
 similar_product =  list(enumerate(cosine_sim[product_index]))
 
 
-sorted_similar_product = sorted(similar_product,key=lambda x:x[1],reverse=True)[1:]
+sorted_similar_product = sorted(similar_product,key=lambda x:x[1],reverse=True)[:]
 
 
 #i=0
