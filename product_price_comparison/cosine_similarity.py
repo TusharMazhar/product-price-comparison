@@ -67,11 +67,15 @@ sorted_similar_product = sorted(similar_product,key=lambda x:x[1],reverse=True)[
 #        break
 
 i=0
-print("Top 5 similar product to "+product_user_search+" are:\n\n")
+print("\n\nTop 5 similar products are  showing below ---\n")
+
 for i in range( len(sorted_similar_product)):
     print('Product Title : ',get_titile_from_index(sorted_similar_product[i][0]))
+    print('Product price : ',df['price'][i],' Taka ')
+    print('Website Link  : ',df['link'][i])
     print('Similarity Score: ',sorted_similar_product[i][1] )
     print("\n")
     i=i+1
     if i>=5:
+        
         break
