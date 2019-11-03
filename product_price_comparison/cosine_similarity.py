@@ -55,7 +55,7 @@ product_index = get_index_from_titile(product_user_search)
 similar_product =  list(enumerate(cosine_sim[product_index]))
 
 
-sorted_similar_product = sorted(similar_product,key=lambda x:x[1],reverse=True)[:]
+sorted_similar_product = sorted(similar_product,key=lambda x:x[1],reverse=True)
 
 
 #i=0
@@ -73,9 +73,8 @@ for i in range( len(sorted_similar_product)):
     print('Product Title : ',get_titile_from_index(sorted_similar_product[i][0]))
     print('Product price : ',df['price'][i],' Taka ')
     print('Website Link  : ',df['link'][i])
-    print('Similarity Score: ',sorted_similar_product[i][1] )
+    print('Similarity Score: ',round((sorted_similar_product[i][1]*100)),'%' )
     print("\n")
     i=i+1
     if i>=5:
-        
         break
