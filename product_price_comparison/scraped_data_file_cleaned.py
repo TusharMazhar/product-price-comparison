@@ -1,8 +1,6 @@
-text=["Heyi boss how are you are you in dhaka now","hi whats up are you lving capital city dhaka"]
+import pandas as pd
 
-from sklearn.feature_extraction.text from CountVectorizer
-cv=CountVectorizer()
-count_matrix=cv.fit_transform(text)
-print(cv.get_feature_names())
-print(count_matrix.toarray())
-
+dataFrame=pd.read_csv('scraped_data_file.csv')
+print(dataFrame)
+df = dataFrame.drop_duplicates('link')
+df.to_csv(r'C:\Users\Tushar\Desktop\CSE499-Group01-best-price.com\product_price_comparison\cleaned_scraped_data_file.csv', index=False)
