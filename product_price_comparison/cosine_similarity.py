@@ -46,25 +46,105 @@ def get_index_from_titile(titile):
 
 
 product_user_search =input("Search - : ")
-
+print('\n')
 
 product_index = get_index_from_titile(product_user_search)
 
-
+#df.iloc[161]['titile']
 
 similar_product =  list(enumerate(cosine_sim[product_index]))
-
+#df.iloc[similar_product]['price']
 
 sorted_similar_product = sorted(similar_product,key=lambda x:x[1],reverse=True)
-
-
-#i=0
-#print("Top 5 similar product to "+product_user_search+" are:")
-#for element in sorted_similar_product:
-#    print(get_titile_from_index(element[0]))
-#    i=i+1
-#    if i>=5:
-#        break
+#...................................................
+l=0
+while l<10:
+    #print(sorted_similar_product[l][0])
+    print("Product Title : ",df.iloc[sorted_similar_product[l][0]]['titile'])
+    print("Product Price : ",df.iloc[sorted_similar_product[l][0]]['price'])
+    print("Product Link : ",df.iloc[sorted_similar_product[l][0]]['link'])
+    print("Similar Score : ",round((sorted_similar_product[l][1]*100)),"%")
+    print("\n")
+    
+    
+    
+    l=l+1
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+#...................................................
+'''
+i=0
+print("Top 5 similar product to  are:")
+print('\n')
+for element in sorted_similar_product:
+    print(get_titile_from_index(element[0]))
+    
+    i=i+1
+    if i>=5:
+        break
+# Zotac GeForce GT 710 2GB DDR3 Graphics Card
 
 i=0
 print("\n\nTop 5 similar products are  showing below ---\n")
@@ -78,3 +158,4 @@ for i in range( len(sorted_similar_product)):
     i=i+1
     if i>=5:
         break
+'''
